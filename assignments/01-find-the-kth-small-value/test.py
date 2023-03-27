@@ -1,7 +1,7 @@
 import unittest
 from typing import TypedDict
 
-from solution import solution
+from solution_v0 import solution
 
 
 class TestSuiteForKthSmallValue(TypedDict):
