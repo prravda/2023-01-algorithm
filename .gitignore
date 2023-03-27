@@ -130,3 +130,6 @@ dmypy.json
 
 # ide configs
 .idea/
+
+# ETC
+playground.py
