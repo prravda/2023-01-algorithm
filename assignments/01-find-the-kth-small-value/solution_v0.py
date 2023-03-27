@@ -1,30 +1,25 @@
 import heapq
 import sys
 
-serial_input_processed: list[int] = list(map(int, sys.stdin.readline().split()))
 
-
-def solution(serial_input: list[int]) -> int:
-    heap_queue = []
-    heapq.heapify(heap_queue)
-
+def solution(stream: list[int]) -> int:
+    min_heap = []
     accm_value = 0
 
-    for i in range(len(serial_input)):
+    for i in range(len(stream)):
         kth = i // 3 + 1
-        heapq.heappush(heap_queue, serial_input[i])
+        heapq.heappush(min_heap, stream[i])
 
-        till_kth_desc: list[int] = []
+        till_kth_asc: list[int] = []
+        copied_min_heap = [_ for _ in min_heap]
 
         for _ in range(kth):
-            till_kth_desc.append(heapq.heappop(heap_queue))
+            till_kth_asc.append(heapq.heappop(copied_min_heap))
 
-        accm_value += till_kth_desc[-1]
-
-        for element in till_kth_desc:
-            heapq.heappush(heap_queue, element)
+        accm_value += till_kth_asc[-1]
 
     return accm_value
 
 
+serial_input_processed: list[int] = list(map(int, sys.stdin.readline().split()))
 print(solution(serial_input_processed))
